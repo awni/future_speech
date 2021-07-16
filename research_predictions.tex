@@ -94,8 +94,23 @@ battery life. Model quantization and knowledge distillation (training a smaller
 model to mimic the predictions of a more accurate larger model) are to commonly
 used techniques. Sparsity, which is less commonly used, is another approach to
 generate lighter weight models. Of these techniques, I predict sparsity to be
-the most promising research direction for reasons I describe in
-section~\ref{sec:research_implications}.
+the most promising research direction.
+
+I believe we have extracted most of the value that quantization has to offer.
+Even in the best possible scenario of further reducing quantization from 8-bit
+to 1-bit, we only get a factor of eight gain. And this is the relatively
+unlikely best possible scenario. We still have a lot to learn about
+distillation. I believe this understanding reduces to the problem of learning
+how to train small models directly rather than taking through the circuitous
+path of training a large model and then a second small model to mimic the large
+model.
+
+This leaves sparsity as the most promising research direction for
+lighter-weight models. As findings like the ``lottery ticket hypothesis''
+demonstrate~\citep{frankle2018lottery}, we still have a lot to learn about the
+role of sparsity in deep neural networks. Furthermore, the theoretical
+computationnal gains from sparsity can be substantial. Realizing these gains
+will also require developments in the software and possibly hardware as well.
 
 Weak supervision will also be an important research direction as it has the
 potential to enable on-device training for applications which would otherwise
