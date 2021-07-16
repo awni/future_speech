@@ -1,11 +1,8 @@
 \documentclass[twocolumn, 12pt]{article}
-\usepackage{amsfonts}
-\usepackage{amsmath}
-\usepackage{amsthm}
 \usepackage[english]{babel}
 \usepackage{booktabs}
+\usepackage{color, colortbl}
 \usepackage[labelfont=bf]{caption}
-\usepackage{epigraph}
 \usepackage[cm]{fullpage}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
@@ -24,6 +21,7 @@
   runcolor=black,
   urlcolor=black]{hyperref}
 
+\definecolor{Gray}{gray}{0.9}
 \setlength{\columnsep}{0.5cm}
 
 
@@ -38,12 +36,23 @@
 \maketitle
 
 \begin{abstract}
-    TODO
+    Over the previous decade (2010-2020) remarkable improvements were made in
+    automatic speech recognition. Many people now use speech
+    recognition on a daily basis. Before 2010 most people rarely used speech
+    recognition. We use speech recognition to perform voice queries, send text
+    messages, and interact with voice assistants like Amazon Alex and Siri by
+    Apple. Given the remarkable and nearly unpredictable changes in the state
+    of speech technology over the previous decade, what can we say about the
+    developments over the next decade? I attempt forecast the state of speech
+    recognition research and applications by the year 2030. While perhaps not
+    as dramatic as the previous decade, I believe we still have an exciting
+    decade of progress in speech technology ahead of us.
 \end{abstract}
 
 \input{predicting_the_future}
 \input{research_predictions}
 \input{application_predictions}
+\input{conclusion}
 
 \section*{\large Acknowledgements}
 Thanks to ...
