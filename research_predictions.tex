@@ -4,14 +4,14 @@
 \subsection{Semi-supervised Learning}
 
 {\bf Prediction:} Semi-supervised learning is here to stay. In particular,
-self-supervised pretrained models will be a part of most machine-learning
-applications which venture beyoned simple linear or tree-based classifiers.
+self-supervised pretrained models will be a part of many machine-learning
+applications, including speech recognition.
 
-The past three years of deep learning have been the years of semi-superivision
-and self-supervision. Self-supervised learning~\cite{lecun2021self} has been
-knocking down the most challenging machine learning benchmarks like dominoes.
-State-of-the-art records have been repeatedly set and updated by
-self-supervised models~\citep{devlin2019bert, radford2019language,
+The past three years of deep learning have been the years of semi and
+self-supervision. Self-supervised learning~\cite{lecun2021self} has knocked
+down the most challenging machine learning benchmarks like dominoes.
+In language tasks, state-of-the-art records have been repeatedly set and
+updated by self-supervised models~\citep{devlin2019bert, radford2019language,
 yang2019xlnet}. Self and semi-supervision are now commonplace and setting
 records in computer vision~\citep{he2020momentum, chen2020simple,
 grill2020bootstrap}, abstractive summarization~\citep{zhang2020pegasus} and
@@ -19,26 +19,26 @@ machine translation~\citep{sennrich2016improving}.
 
 Speech recognition has also benefited from semi-supervised learning. Two
 approaches are commonly used, both of which work well and which are likely
-complementary. The former is self-supervised
+complementary. The first approach is self-supervised
 pretraining~\citep{schneider2019wav2vec, zhang2020pushing} with a loss function
 based on contrastive predictive coding~\citep{oord2018representation}. The idea
 is simple: train the model to predict the future frame(s) of audio given the
 past. Of course, the devil is in the details and the scale. The second approach
-is psuedo-labeling~\citep{lee2013pseudo, kahn2020self, xu2020iterative}. Again
-the idea is simple: use the trained model to predict the label on unlabelled
+is pseudo-labeling~\citep{lee2013pseudo, kahn2020self, xu2020iterative}. Again
+the idea is simple: use the trained model to predict the label on unlabeled
 data, then train a new model on the predicted labels as if they were the ground
 truth. And again the devil is in the details and the scale. I find the fact
-that pseudolabelling leads to better models to be remarkable. It feels as if we
+that pseudo-labeling leads to better models to be remarkable. It feels as if we
 are getting something for nothing. My ``no free lunch'' alarm bells are
 ringing. The reason it works and the regimes in which it improves a model are
-still poorly understood, and are interesting research questions.
+still poorly understood and are interesting research questions.
 
 Part of my job these days involves a lot of time recruiting, which means a lot
 of interviews. I've interviewed likely more than a hundred candidates from a
 large number of companies working on a diverse array of machine-learning
 applications. Some large fraction, maybe as high as fifty percent, and for the
 natural language applications close to 100\%, rely on a pretrained model as the
-basis for their machine-learning enaabled product or feature. Self-supervised
+basis for their machine-learning enabled product or feature. Self-supervised
 pretraining is already pervasive in industry.
 
 The main challenges with self-supervision are those of scale, and hence
@@ -62,13 +62,13 @@ efficiency.
 edge.
 
 A few reasons suggest this will happen. First, from a privacy perspective,
-keeping your data on your device rather then sending it to the a central server
+keeping your data on your device rather then sending it to a central server
 is much safer. The trends towards more private machine learning will encourage
 on device inference whenever possible. If the model needs to learn from user
 data, then the training should happen on the device whenever possible.
 
 The second reason to prefer on device inference is latency. In absolute terms,
-The difference between 10 millisecons and 100 milliseconds is not much at all.
+The difference between 10 milliseconds and 100 milliseconds is not much at all.
 But the factor of ten puts the former well below the perceptual latency of a
 human the latter well above~\citep{lago2004quest, levitin2000perception}.
 Google has already demonstrated an on device speech recognition system with
@@ -109,13 +109,13 @@ This leaves sparsity as the most promising research direction for
 lighter-weight models. As findings like the ``lottery ticket hypothesis''
 demonstrate~\citep{frankle2018lottery}, we still have a lot to learn about the
 role of sparsity in deep neural networks. Furthermore, the theoretical
-computationnal gains from sparsity can be substantial. Realizing these gains
+computational gains from sparsity can be substantial. Realizing these gains
 will also require developments in the software and possibly hardware as well.
 
 Weak supervision will also be an important research direction as it has the
 potential to enable on-device training for applications which would otherwise
-require labelled data. For example a users interaction with the speech
-recognizers output or the actions they take immediately afterward could be
+require labeled data. For example a users interaction with the output of a
+speech recognizer or the actions they take immediately afterward could be
 useful signal from which the model can learn in a weakly supervised manner.
 
 \begin{figure*}[ht!]
@@ -154,7 +154,7 @@ Part of the problem is that we need harder benchmarks for researchers to
 grapple with. The community has recently provided two new benchmarks that may
 spur further research in speech recognition~\citep{chen2021gigaspeech,
 galvez2021people}. However, I predict that these benchmarks will be quickly
-saturated with the use of large neurral networks and large scale
+saturated with the use of large neural networks and large scale
 computation.
 
 Another part of the problem is that we have reached a regime where word error
@@ -164,13 +164,13 @@ figure~\ref{fig:wers} surpassed human word error rates several years
 ago.\footnote{Estimates of human-level word error rates on the CallHome portion
 of Hub5'00 vary considerably. For example \citet{saon2017english} report a best
 result 6.8 out of three transcribers whose results vary by nearly 2.0 absolute
-word error rate.} On the other hand, humans still understand speech in most
-settings better than speech recognizers do. This implies that word error rate
-as a measue of the quality of our recognizers does not correlate well with an
-ability to understand human speech.
+word error rate.} On the other hand, in most settings humans are still better
+than machines at understanding speech. This implies that word error rate as a
+measure of the quality of a speech recognition system does not correlate well
+with an ability to understand human speech.
 
 A final issue is research in state-of-the-art speech recognition is becoming
-less accessible as models are getting larger, datasets are getting larger, and
+less accessible as models are getting larger, data sets are getting larger, and
 compute costs are increasing. A few well industry labs are rapidly becoming the
 only places that can fund this type of research. As the advances become more
 incremental and further from academia, this part of the field will continue to
@@ -194,7 +194,7 @@ albeit interesting research problem.
 I think a much more likely outcome is to pass downstream applications richer
 outputs from the speech recognizer. For example, instead of passing a single
 transcription a lattice of possibilities which captures the uncertainty for
-each could be much more useful
+each could be much more useful.
 
 {\bf Research implications:} The exact structure used to encode the
 representation is an open question. One possibility could be some sort of
@@ -205,22 +205,21 @@ sized graphs as input.
 
 \subsection{Personalization}
 
-{\bf Prediction:} By the end of the decade, speech recognizers will be much
-more deeply personalized to individual users. This is in part a direct
-corollary of enablind on device training, but the motivation is distinct from
+{\bf Prediction:} By the end of the decade, speech recognition models will be
+deeply personalized to individual users. This is in part a direct
+corollary of enabling on device training, but the motivation is distinct from
 those discussed in section~\ref{sec:on_device}.
 
-In general, one of the main distinctions between the way speech recognizers
-interpret human speech and they way humans do is in the use of context. Humans
-have much more context available when listening to one another than. This
-context includes the topic of conversation, what was said in the past, the
-noise background, and visual cues like lip movement and facial expressions. I
-believe we have, or will soon reach, the Bayes error rate for speech
-recognition on short (\emph{i.e.} less than ten seconds) utterances taken out
-of context. Our models are using the signal available in the data to the best
-of their ability. To continue to improve the machine understaning of human
-speech will require leveraging context as a deeper part of the recognition
-process.
+One of the main distinctions between the automatic recognition of speech and
+the human interpretation of speech is in the use of context. Humans have much
+more context available when listening to one another than. This context
+includes the topic of conversation, what was said in the past, the noise
+background, and visual cues like lip movement and facial expressions. I believe
+we have, or will soon reach, the Bayes error rate for speech recognition on
+short (\emph{i.e.} less than ten seconds) utterances taken out of context. Our
+models are using the signal available in the data to the best of their ability.
+To continue to improve the machine understanding of human speech will require
+leveraging context as a deeper part of the recognition process.
 
 One route for this is personalization. Personalization is already commonly used
 to improve the recognition a given users contact list for utterances of the
@@ -236,6 +235,6 @@ much more pervasive personalization by the end of the decade.
 {\bf Research implications:} Personalization requires on device training which
 in itself requires lighter-weight models and likely some form of weak
 supervision (see section~\ref{sec:on_device}). Furthermore, personalization
-requires models which can are easily customizable to a given user or context.
+requires models which can be easily customized to a given user or context.
 The best way to incorporate such context into a model is still a research
 question.
