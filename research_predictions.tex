@@ -8,13 +8,15 @@ self-supervised pretrained models will be a part of many machine-learning
 applications, including speech recognition.
 
 The past three years of deep learning have been the years of semi and
-self-supervision. Self-supervised learning~\cite{lecun2021self} has knocked
-down the most challenging machine learning benchmarks like dominoes.
-In language tasks, state-of-the-art records have been repeatedly set and
-surpassed by self-supervised models~\citep{devlin2019bert, radford2019language,
-yang2019xlnet}. Self and semi-supervision are now commonplace and setting
-records in computer vision~\citep{he2020momentum, chen2020simple,
-grill2020bootstrap}, abstractive summarization~\citep{zhang2020pegasus} and
+self-supervision. The field has undoubtedly learned how to improve
+machin-learning models using unannotated data. Self-supervised
+learning~\cite{lecun2021self} has knocked down the most challenging machine
+learning benchmarks like dominoes. In language tasks, state-of-the-art records
+have been repeatedly set and surpassed by self-supervised
+models~\citep{devlin2019bert, radford2019language, yang2019xlnet}. Self and
+semi-supervision are now commonplace and setting records in computer
+vision~\citep{he2020momentum, chen2020simple, grill2020bootstrap}, abstractive
+summarization~\citep{zhang2020pegasus} and
 machine translation~\citep{sennrich2016improving}.
 
 Speech recognition has also benefited from semi-supervised learning. Two
@@ -32,12 +34,14 @@ that pseudo-labeling leads to better models is remarkable. It feels as if we
 are getting something for nothing, a free lunch. The reason and the regime in
 which pseudo-labeling works are interesting research questions.
 
-Part of my job is hiring, which means a lot of interviews. I've interviewed
-more than a hundred candidates working on a diverse array of machine-learning
-applications. Some large fraction, as high as 50\% and for the natural language
-applications close to 100\%, rely on a pretrained model as the basis for their
-machine-learning enabled product or feature. Self-supervised pretraining is
-already pervasive in industry.
+Part of my job as a research scientist is hiring, which means a lot of
+interviews. I've interviewed more than a hundred candidates working on a
+diverse array of machine-learning applications. Some large fraction,
+particularly of the natural language applications, rely on a pretrained model
+as the basis for their machine-learning enabled product or feature.
+Self-supervised pretraining is already pervasive in language applications in
+industry. I predict that by 2030 self-supervised pretraining will be just as
+pervasive in speech recognition.
 
 The main challenges with self-supervision are those of scale, and hence
 accessibility. Right now only the most highly endowed industry research labs
@@ -58,11 +62,11 @@ incorporating prior knowledge for sample efficiency.
 {\bf Prediction:} Most speech recognition will happen on the device or at the
 edge.
 
-A few reasons suggest this will happen. First, keeping your data on your device
-rather then sending it to a central server is more private. The trend
-towards more private machine learning will encourage on device inference
-whenever possible. If the model needs to learn from a user's data, then the
-training should happen on the device.
+There are a few reasons I predict this will happen. First, keeping your data on
+your device rather then sending it to a central server is more private. The
+trend towards data privacy will encourage on-device inference whenever
+possible. If the model needs to learn from a user's data, then the training
+should happen on the device.
 
 The second reason to prefer on-device inference is latency. In absolute terms,
 the difference between 10 milliseconds and 100 milliseconds is not much.  But
@@ -87,25 +91,28 @@ works every time.
 {\bf Research implications:} On-device recognition requires models with smaller
 compute and memory requirements, and which use less energy in order to preserve
 battery life. Model quantization and knowledge distillation (training a smaller
-model to mimic the predictions of a more accurate larger model) are two commonly
-used techniques. Sparsity, which is less commonly used, is another approach to
-generate lighter-weight models. Of these techniques, I predict sparsity to be
-the most promising research direction.
+model to mimic the predictions of a more accurate larger model) are two
+commonly used techniques. Sparsity, which is less commonly used, is another
+approach to generate lighter-weight models. In sparse models, most of the
+parameters (\emph{i.e.} connections between hidden states) are zero and can be
+effectively ignored. Of these three techniques, I predict sparsity to be the
+most promising research direction.
 
 I believe we have extracted most of the value that quantization has to offer.
 Even in the best possible scenario of further reducing quantization from 8-bit
-to 1-bit, we only get a factor of eight gain. And this is the relatively
+to 1-bit, we only get a factor-of-eight gain. And this is the relatively
 unlikely best possible scenario. With distillation, we still have a lot to
-learn. I believe this understanding reduces to the problem of learning how to
-train small models directly rather than taking the circuitous path of training
-a large model and then a second small model to mimic the large model.
+learn. However, I believe uncovering the mechanism through which
+distillation works will subsequently enable us to train small models
+directly rather than taking the circuitous path of training a large model and
+then a second small model to mimic the large model.
 
 This leaves sparsity as the most promising research direction for
 lighter-weight models. As findings like the ``lottery ticket hypothesis''
 demonstrate~\citep{frankle2018lottery}, we have a lot to learn about the role
 of sparsity in deep learning. In theory, the computational gains from sparsity
-could be substantial. Realizing these gains will also require developments in
-the software and possibly hardware as well.
+could be substantial. Realizing these gains will require developments in the
+software, and possibly hardware, used to evaluate sparse models.
 
 Weak supervision will be an important research direction for on-device training
 for applications which typically require labeled data. For example, a users
@@ -164,7 +171,7 @@ our speech recognition systems does not correlate well with an ability to
 understand human speech.
 
 A final issue is research in state-of-the-art speech recognition is becoming
-less accessible as models and data sets are getting larger, and as compute
+less accessible as models and data sets are getting larger, and as computing
 costs are increasing. A few well funded industry labs are rapidly becoming the
 only places that can afford this type of research. As the advances become more
 incremental and further from academia, this part of the field will continue to
@@ -196,30 +203,6 @@ recognizer to specific applications~\cite{k2, hannun2020differentiable}. This
 type of representation also requires models which are able to ingest
 variable-sized graphs as input.
 
-\begin{table*}[ht!]
-    \caption{Predictions for the progress in speech recognition research and applications
-    by the year 2030.}
-    \centering
-    \begin{tabular}{l}
-    \toprule
-    Prediction \\
-    \midrule
-    Self-supervised learning and pretrained models are here to stay. \\
-    \rowcolor{Gray} Most speech recognition (inference) will happen at the edge. \\
-    On-device model training will be much more common. \\
-    \rowcolor{Gray} Sparsity will be a key research direction to enable on-device inference and training. \\
-    Improving word error rate on common benchmarks will fizzle out as a research goal. \\
-    \rowcolor{Gray} Speech recognizers will output richer representations (graphs) for use by downstream tasks. \\
-    Personalized models will be commonplace. \\
-    \rowcolor{Gray} Most transcription services will be automated. \\
-    Voice assistants will continue to improve, but incrementally. \\
-    \rowcolor{Gray} We will not live in always listening, voice-controlled homes. \\
-    Voice controlled augmented reality glasses will not be widespread. \\
-    \bottomrule
-    \end{tabular}
-    \label{tab:predictions}
-\end{table*}
-
 \subsection{Personalization}
 
 {\bf Prediction:} By the end of the decade, speech recognition models will be
@@ -249,6 +232,6 @@ the end of the decade.
 
 {\bf Research implications:} On-device personalization requires on-device
 training which in itself requires lighter-weight models and some form of weak
-supervision (see section~\ref{sec:on_device}).  Furthermore, personalization
-requires models which can be easily customized to a given user or context. The
-best way to incorporate such context into a model is still a research question.
+supervision (see section~\ref{sec:on_device}).  Personalization requires models
+which can be easily customized to a given user or context. The best way to
+incorporate such context into a model is still a research question.

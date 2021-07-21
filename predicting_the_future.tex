@@ -1,27 +1,23 @@
 \section{On Predicting the Future}
 \label{sec:predicting_future}
 
-My goal in this article is to make accurate predictions of the future of
-automatic speech recognition. Before I begin, I'd like to share some findings
-on the general problem of predicting the future. These findings are inspired by
-one of the great forecasters, Richard Hamming. Hamming in \emph{The Art of
+Richard Hamming in \emph{The Art of
 Doing Science and Engineering}~\citep{hamming1997art} makes many predictions,
 many of which have come to pass. Here are a few examples\footnote{Quotes and
 predictions are from chapters 2, 4, and 21 of \citet{hamming1997art}.}
 \begin{itemize}
-    \item Stated that by ``the year 2020 it would be fairly universal
+    \item He stated that by ``the year 2020 it would be fairly universal
         practice for the expert in the field of application to do the actual
         program preparation rather than have experts in computers (and ignorant
         of the field of application) do the program preparation.''
-    \item On networks predicted that they ``represent a solution to
-        \emph{the programming problem}'', and that ``they will probably play a
-        large part in the future of computers.''
-    \item Predicted the prevalence of general purpose rather than special
+    \item He predicted that neural networks ``represent a solution to \emph{the
+        programming problem}'', and that ``they will probably play a large part
+        in the future of computers.''
+    \item He predicted the prevalence of general purpose rather than special
         purpose hardware, digital over analog, and high-level programming
-        languages all long before the field had decided one way or
-        another.
-    \item Anticipated the use of fiber-optic cables in place of copper wire for
-        communication well before the switch actually took place.
+        languages all long before the field had decided one way or another.
+    \item He anticipated the use of fiber-optic cables in place of copper wire
+        for communication well before the switch actually took place.
 \end{itemize}
 
 These are just a few examples of Hamming's extraordinary prescience. Why was he
@@ -34,13 +30,14 @@ thoughts'' in which he mused on the future. But he didn't just predict in
 isolation. He made his predictions public, which forced him to put them in a
 communicable form and held him accountable. For example, in 1960 Hamming gave a
 talk titled ``The History of Computing to the Year 2000'' (you may recognize
-the title).
+the title) in which he predicted how computing would evolve over the several
+decades.
 
-{\bf Focus on fundamentals:} In some ways, forecasting the future is really
-just understanding the present more than those around you. This requires not
-just a depth in one field but non-trivial breadth. This also requires the
-ability to rapidly assimilate new knowledge. Mastering the fundamentals builds
-a strong foundation for both.
+{\bf Focus on fundamentals:} In some ways, forecasting the future development
+of technology is really just understanding the present state of technology more
+than those around you. This requires not just a depth in one field but
+non-trivial breadth. This also requires the ability to rapidly assimilate new
+knowledge. Mastering the fundamentals builds a strong foundation for both.
 
 {\bf Open mind:} Probably the most important trait Hamming exhibited, and in my
 opinion the most difficult to learn, was his ability to keep an open mind.
@@ -52,11 +49,11 @@ with the door closed, but he kept his office door open as he believed an ``open
 mind leads to the open door, and the open door tends to lead to the open
 mind''~\citep[chp. 30]{hamming1997art}.
 
-I'll add to these a few more thoughts. First, the rate of change of
-technology is increasing. This makes it harder to predict the distant
-future today than it was 50 or 100 years ago. These days predicting the
-evolution of a field even ten years out strikes me as a challenge. Hence that's
-the time frame I'm choosing to work with.
+I'll add to these a few more thoughts. First, the rate of change of progress in
+computing and machine learning is increasing. This makes it harder to predict
+the distant future today than it was 50 or 100 years ago. These days predicting
+the evolution of speech recognition even ten years out strikes me as a
+challenge. Hence that's the time frame I'm choosing to work with.
 
 A common saying about technology forecasting is that short-term predictions
 tend to be overly optimistic and long-term predictions tend to be overly
@@ -67,10 +64,7 @@ linear with time. Progress in speech recognition over the previous decade
 (2010-2020) was driven by exponential growth along a few key axes. These
 included both compute (e.g. floating-point operations per second) and data set
 sizes. Whether or not figure~\ref{fig:exponential_growth} applies to speech
-recognition for the coming decade remains to be seen. We may continue to see
-rapid progressing in compute and data, or we may be on a sigmoidal curve and
-approaching the saturation point. I attempt to keep this framework in mind
-when forecasting the state of speech recognition to the year 2030.
+recognition for the coming decade remains to be seen.
 
 \begin{figure}
     \centering
@@ -87,7 +81,10 @@ As a hedge, I'll be upfront that I think predicting the future is
 \emph{hard}. I am no expert at it. I'm sure a lot of the following predictions
 will prove wrong. In some ways, the more controversial predictions I make are
 really more of an optimistic wishlist for the future. On that note, let me
-close this section with the famous words of Alan Kay:
+close this section with the famous words of the computer scientist Alan
+Kay\footnote{Alan Kay is best known for developing the modern graphical user
+interface and also object-oriented programming in the Smalltalk programming
+langauge.}:
 \begin{quote}
     \emph{The best way to predict the future is to invent it.}
 \end{quote}
