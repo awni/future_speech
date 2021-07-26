@@ -179,6 +179,14 @@ shift from research labs to engineering organizations.
 
 \subsection{Richer Representations}
 
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{figures/lattice}
+\caption{An example lattice used to encode mutliple hypotheses output from a
+    speech recognizer with differing weights.}
+\label{fig:lattice}
+\end{figure}
+
 {\bf Prediction:} Transcriptions will be replaced by richer representations for
 downstream tasks which rely on the output of a speech recognizer. Examples of
 such downstream applications include conversational agents, voice-based search
@@ -193,8 +201,9 @@ albeit interesting research problem.
 
 I think a much more likely outcome is to pass downstream applications richer
 outputs from the speech recognizer. For example, instead of passing a single
-transcription, passing a lattice of possibilities which captures the
-uncertainty for each could be much more useful.
+transcription, passing a lattice of possibilities (as in
+figure~\ref{fig:lattice}) which captures the uncertainty for each could be much
+more useful.
 
 {\bf Research implications:} The exact structure used to encode the
 representation is an open question. One possibility could be some sort of
