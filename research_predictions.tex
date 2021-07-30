@@ -7,17 +7,26 @@
 self-supervised pretrained models will be a part of many machine-learning
 applications, including speech recognition.
 
+Part of my job as a research scientist is hiring, which means a lot of
+interviews. I've interviewed more than a hundred candidates working on a
+diverse array of machine-learning applications. Some large fraction,
+particularly of the natural language applications, rely on a pretrained model
+as the basis for their machine-learning enabled product or feature.
+Self-supervised pretraining is already pervasive in language applications in
+industry. I predict that by 2030 self-supervised pretraining will be just as
+pervasive in speech recognition.
+
 The past three years of deep learning have been the years of semi and
 self-supervision. The field has undoubtedly learned how to improve
 machin-learning models using unannotated data. Self-supervised
-learning~\cite{lecun2021self} has knocked down the most challenging machine
-learning benchmarks like dominoes. In language tasks, state-of-the-art records
-have been repeatedly set and surpassed by self-supervised
+learning~\cite{lecun2021self} has benefited many of the most challenging
+machine learning benchmarks. In language tasks, state-of-the-art records have
+been repeatedly set and surpassed by self-supervised
 models~\citep{devlin2019bert, radford2019language, yang2019xlnet}. Self and
 semi-supervision are now commonplace and setting records in computer
 vision~\citep{he2020momentum, chen2020simple, grill2020bootstrap}, abstractive
-summarization~\citep{zhang2020pegasus} and
-machine translation~\citep{sennrich2016improving}.
+summarization~\citep{zhang2020pegasus} and machine
+translation~\citep{sennrich2016improving}.
 
 Speech recognition has also benefited from semi-supervised learning. Two
 approaches are commonly used, both of which work well. The first approach is
@@ -34,15 +43,6 @@ that pseudo-labeling leads to better models is remarkable. It feels as if we
 are getting something for nothing, a free lunch. The reason and the regime in
 which pseudo-labeling works are interesting research questions.
 
-Part of my job as a research scientist is hiring, which means a lot of
-interviews. I've interviewed more than a hundred candidates working on a
-diverse array of machine-learning applications. Some large fraction,
-particularly of the natural language applications, rely on a pretrained model
-as the basis for their machine-learning enabled product or feature.
-Self-supervised pretraining is already pervasive in language applications in
-industry. I predict that by 2030 self-supervised pretraining will be just as
-pervasive in speech recognition.
-
 The main challenges with self-supervision are those of scale, and hence
 accessibility. Right now only the most highly endowed industry research labs
 (\emph{e.g.} Google Brain, Google DeepMind, Facebook AI Research, OpenAI,
@@ -56,6 +56,29 @@ Research directions which could lead to this include sparsity for
 lighter-weight models, optimization for faster training, and effective ways of
 incorporating prior knowledge for sample efficiency.
 
+\begin{figure*}[ht!]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{figures/librispeech_wer}
+    \caption{LibriSpeech}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{figures/switchboard_wer}
+    \caption{Switchboard Hub5'00}
+    \end{subfigure}
+    \caption{The improvement in word error rate over time on the
+    LibriSpeech~\citep{panayotov2015librispeech} and Switchboard Hub5'00
+    benchmarks. The data for these figures is from
+    \url{https://github.com/syhw/wer_are_we}. The dashed lines indicate
+    human-level performance. The human-level results on LibriSpeech are
+    reported in \citet{amodei2016deep}, and those on Switchboard are reported in
+    \citet{xiong2016achieving}.}
+    \label{fig:wers}
+\end{figure*}
+
 \subsection{On Device}
 \label{sec:on_device}
 
@@ -63,7 +86,7 @@ incorporating prior knowledge for sample efficiency.
 edge.
 
 There are a few reasons I predict this will happen. First, keeping your data on
-your device rather then sending it to a central server is more private. The
+your device rather than sending it to a central server is more private. The
 trend towards data privacy will encourage on-device inference whenever
 possible. If the model needs to learn from a user's data, then the training
 should happen on the device.
@@ -89,21 +112,20 @@ difference between a product which works most of the time and a product which
 works every time.
 
 {\bf Research implications:} On-device recognition requires models with smaller
-compute and memory requirements, and which use less energy in order to preserve
+compute and memory requirements and which use less energy in order to preserve
 battery life. Model quantization and knowledge distillation (training a smaller
 model to mimic the predictions of a more accurate larger model) are two
 commonly used techniques. Sparsity, which is less commonly used, is another
 approach to generate lighter-weight models. In sparse models, most of the
 parameters (\emph{i.e.} connections between hidden states) are zero and can be
-effectively ignored. Of these three techniques, I predict sparsity to be the
+effectively ignored. Of these three techniques, I think sparsity is the
 most promising research direction.
 
 I believe we have extracted most of the value that quantization has to offer.
-Even in the best possible scenario of further reducing quantization from 8-bit
-to 1-bit, we only get a factor-of-eight gain. And this is the relatively
-unlikely best possible scenario. With distillation, we still have a lot to
-learn. However, I believe uncovering the mechanism through which
-distillation works will subsequently enable us to train small models
+Even in the unlikely best possible scenario of further reducing quantization
+from 8-bit to 1-bit, we only get a factor-of-eight gain. With distillation, we
+still have a lot to learn. However, I believe uncovering the mechanism through
+which distillation works will subsequently enable us to train small models
 directly rather than taking the circuitous path of training a large model and
 then a second small model to mimic the large model.
 
@@ -115,33 +137,10 @@ could be substantial. Realizing these gains will require developments in the
 software, and possibly hardware, used to evaluate sparse models.
 
 Weak supervision will be an important research direction for on-device training
-for applications which typically require labeled data. For example, a users
+for applications, which typically require labeled data. For example, a users
 interaction with the output of a speech recognizer or the actions they take
 immediately afterward could be useful signal from which the model can learn in
 a weakly-supervised manner.
-
-\begin{figure*}[ht!]
-    \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{figures/librispeech_wer}
-    \caption{LibriSpeech}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{figures/switchboard_wer}
-    \caption{Switchboard Hub5'00}
-    \end{subfigure}
-    \caption{The improvement in word error rate over time on the
-    LibriSpeech~\citep{panayotov2015librispeech} and Switchboard Hub5'00
-    benchmarks. The data for these figures is from
-    \url{https://github.com/syhw/wer_are_we}. The dashed lines indicate
-    human-level performance. The human-level results on LibriSpeech are
-    reported in \citet{amodei2016deep}, and those on Switchboard are reported in
-    \citet{xiong2016achieving}.}
-    \label{fig:wers}
-\end{figure*}
 
 \subsection{Word Error Rate}
 \label{sec:wer}
@@ -172,7 +171,7 @@ understand human speech.
 
 A final issue is research in state-of-the-art speech recognition is becoming
 less accessible as models and data sets are getting larger, and as computing
-costs are increasing. A few well funded industry labs are rapidly becoming the
+costs are increasing. A few well-funded industry labs are rapidly becoming the
 only places that can afford this type of research. As the advances become more
 incremental and further from academia, this part of the field will continue to
 shift from research labs to engineering organizations.
@@ -199,9 +198,9 @@ One possibility is to develop a \emph{semantic error rate} and use
 it to measure the quality of the speech recognizer. This is a challenging
 albeit interesting research problem.
 
-I think a much more likely outcome is to pass downstream applications richer
-outputs from the speech recognizer. For example, instead of passing a single
-transcription, passing a lattice of possibilities (as in
+I think a more likely outcome is to give downstream applications richer
+representations from the speech recognizer. For example, instead of passing a
+single transcription, passing a lattice of possibilities (as in
 figure~\ref{fig:lattice}) which captures the uncertainty for each could be much
 more useful.
 
@@ -221,10 +220,10 @@ One of the main distinctions between the automatic recognition of speech and
 the human interpretation of speech is in the use of context. Humans rely on a
 lot of context when speaking to one another. This context includes the topic
 of conversation, what was said in the past, the noise background, and visual
-cues like lip movement and facial expressions. I believe we have, or will soon
+cues like lip movement and facial expressions. We have, or will soon
 reach, the Bayes error rate for speech recognition on short (\emph{i.e.} less
 than ten second long) utterances taken out of context. Our models are using the
-signal available in the data to the best of their ability.  To continue to
+signal available in the data to the best of their ability. To continue to
 improve the machine understanding of human speech will require leveraging
 context as a deeper part of the recognition process.
 
